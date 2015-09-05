@@ -35,10 +35,10 @@ fclose($origFile);
 $result = $lCount.",".$eCount;
 fwrite($logFile,$result);
 fclose($logFile);
-$_SESSION['attempts'] = $_SESSION['attempts']+1;
 include('db.php');
-$result = mysqli_query($conn,"INSERT INTO submissions(uid,qid,attempts,errors,lines_used) VALUES($uid,$qid,1,$eCount,$lCount)");
+$result = mysqli_query($conn,"INSERT INTO submissions(uid,qid,attempts,errors,lines_used) VALUES($uid,$qid,".$_SESSION['attempts'].",$eCount,$lCount)");
 if($result){
 	echo "Done.";
+	//$_SESSION['attempts'] = $_SESSION['attempts']+1;
 }
 ?>

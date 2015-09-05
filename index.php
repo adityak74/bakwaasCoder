@@ -93,6 +93,8 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 							//putting random qid for testing
 							$_SESSION['qid']=2;
 
+							if($_SESSION['attempts']<4)
+							{
 							?>
 							<center>
 								<h3>Question goes here</h3>
@@ -105,7 +107,9 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 									</label>
 								</form>
 							</center>
-							
+							<?php
+							}
+							?>
 						</div>
 					</div>
 				</div>
