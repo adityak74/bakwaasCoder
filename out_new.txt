@@ -1,0 +1,10 @@
+hell.cpp: In function ‘int main()’:
+hell.cpp:5:7: error: expected primary-expression before ‘?’ token
+  cout??"hello world";
+       ^
+hell.cpp:5:21: error: expected ‘:’ before ‘;’ token
+  cout??"hello world";
+                     ^
+hell.cpp:5:21: error: expected primary-expression before ‘;’ token
+hell.cpp:5:21: error: expected ‘:’ before ‘;’ token
+hell.cpp:5:21: error: expected primary-expression before ‘;’ token

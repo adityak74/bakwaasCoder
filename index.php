@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,6 +49,17 @@ session_start();
 			if(isset($_SESSION['uname']) && isset($_SESSION['loggedin']))
 			{
 			$fname=$_SESSION['fname'];
+			include 'db.php';
+			$query = "SELECT * from submissions WHERE uid='".$_SESSION['uid']."'";
+			$result = mysqli_query($conn,$query) or die("The Query failed: ".mysqli_error($conn));
+			if(mysqli_num_rows($result)>0){
+				while($row=mysqli_fetch_assoc($result)){
+					$_SESSION['attempts'] = $row['attempts'];
+				}
+			}else{
+				$_SESSION['attempts']=1;
+			}
+			
 			echo 'Welcome '.$fname;
 			echo ' | <a href="logout.php">Logout</a>	';
 			?>
@@ -73,6 +85,28 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 						<h3 class="text-center">Your Question</h3>
 						<div class="row" >
 							<!-- Problem will load here by random from the database -->
+							<?php 
+
+							//echo rand(1,10);
+
+							echo "";
+
+							//putting random qid for testing
+							$_SESSION['qid']=2;
+
+							?>
+							<center>
+								<h3>Question goes here</h3>
+								<form role="form" action="upload.php" method="post" enctype="multipart/form-data">
+									<label for="file">
+										<br>
+										<input id="ufile" type="file" name="uploadedFile" accept="text/x-c++src">
+										<br>
+										<button class="btn btn-primary" type="submit" name="submitBt">Submit</button>
+									</label>
+								</form>
+							</center>
+							
 						</div>
 					</div>
 				</div>

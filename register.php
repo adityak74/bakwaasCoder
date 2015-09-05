@@ -246,9 +246,11 @@ else{
 		echo "</b>, you have successfully registered with your email id <b>";
 		echo "</b>.<br>";
 		$_SESSION['loggedin']=1;
+		
 		$_SESSION['fname']=$fname;
-		$_SESSION['regno']=$uname;
-		$_SESSION['phno']=$mobile;
+		$_SESSION['uname']=$uname;
+		//$_SESSION['phno']=$mobile;
+	
 
 		//get the recently registered user ID by the regno
 		$query = "SELECT * from users WHERE regno='".$uname."'";
