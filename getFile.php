@@ -6,9 +6,9 @@ if(!(isset($_SESSION['logggedin']) && ($_SESSION['logggedin']==1)))
 }
 
 $uid = $_SESSION['uid'];
-$sid = $_SESSION['sid'];
+//$sid = $_SESSION['sid'];
 $qid = $_SESSION['qid'];
-$uploadedFile = $_SESSION[''];
+$uploadedFile = $_SESSION['programFilePath'];
 
 $command = system("g++ ".$uploadedFile." 2>out.txt");
 $errorFile = "o_".$uid."_".$qid."_".$_SESSION['attempts']."txt";
