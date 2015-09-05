@@ -1,5 +1,0 @@
-<?php
-
-system("pwd",$ret);
-
-?>
