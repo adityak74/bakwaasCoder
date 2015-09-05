@@ -54,12 +54,11 @@ session_start();
 			$result = mysqli_query($conn,$query) or die("The Query failed: ".mysqli_error($conn));
 			if(mysqli_num_rows($result)>0){
 				while($row=mysqli_fetch_assoc($result)){
-					$_SESSION['attempts'] = $row['attempts'];
+					$_SESSION['attempts'] = $row['attempts']+1;
 				}
 			}else{
 				$_SESSION['attempts']=1;
 			}
-			
 			echo 'Welcome '.$fname;
 			echo ' | <a href="logout.php">Logout</a>	';
 			?>
