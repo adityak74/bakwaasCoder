@@ -32,6 +32,7 @@ if(isset($_POST["submitBt"])) {
 	    if (move_uploaded_file($_FILES["uploadedFile"]["tmp_name"], $target_file)) {
 	        echo "The file ". $uploadFileName . " has been uploaded.";
 	        $_SESSION['programFilePath'] = $target_file;
+	        header("Location: getFile.php");
 	    } else {
 	        echo "Sorry, there was an error uploading your file.";
 	    }
