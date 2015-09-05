@@ -72,7 +72,7 @@ session_start();
 					$_SESSION['loggedin']=1;
 					$_SESSION['uid']=$row['uid'];
 					$_SESSION['fname']=$row['name'];
-					$_SESSION['regno']=$row['regno'];
+					$_SESSION['uname']=$row['regno'];
 					
 					echo "<div class=\"col-sm-4\"></div>
 					      <div class=\"col-sm-4\">
