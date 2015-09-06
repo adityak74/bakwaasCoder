@@ -81,7 +81,7 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 						</ul>
 					</div>
 					<div class="col-sm-8">
-						<h3 class="text-center">Your Question</h3>
+						
 						<div class="row" >
 							<!-- Problem will load here by random from the database -->
 							<?php 
@@ -97,6 +97,7 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 							{
 							?>
 							<center>
+								<h3 class="text-center">Your Question</h3>
 								<h3>Question goes here</h3>
 								<form role="form" action="upload.php" method="post" enctype="multipart/form-data">
 									<label for="file">
@@ -106,6 +107,13 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 										<button class="btn btn-primary" type="submit" name="submitBt">Submit</button>
 									</label>
 								</form>
+							</center>
+							<?php
+							}
+							else{
+							?>
+							<center>
+								<h3>You have completed the challenge.Logout and have fun.</h3>
 							</center>
 							<?php
 							}
