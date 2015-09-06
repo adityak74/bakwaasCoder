@@ -36,7 +36,7 @@ $result = $lCount.",".$eCount;
 fwrite($logFile,$result);
 fclose($logFile);
 include('db.php');
-$result = mysqli_query($conn,"INSERT INTO submissions(uid,qid,attempts,errors,lines_used) VALUES($uid,$qid,".$_SESSION['attempts'].",$eCount,$lCount)");
+$result = mysqli_query($conn,"INSERT INTO submissions(uid,qid,attempts,errors,lines_used,uploaded_time) VALUES($uid,$qid,".$_SESSION['attempts'].",$eCount,$lCount,now())");
 if($result){
 	echo "Done.";
 	//$_SESSION['attempts'] = $_SESSION['attempts']+1;

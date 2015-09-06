@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 05, 2015 at 04:32 PM
+-- Generation Time: Sep 06, 2015 at 08:10 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `qid` int(4) NOT NULL,
   `qdesc` varchar(1000) NOT NULL,
   `difficulty` int(1) NOT NULL,
-  `uploaded_time` date DEFAULT NULL,
   `max_err` int(3) NOT NULL,
   `max_lines` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -47,8 +46,18 @@ CREATE TABLE IF NOT EXISTS `submissions` (
   `qid` int(3) NOT NULL,
   `attempts` int(1) NOT NULL,
   `errors` int(2) NOT NULL,
-  `lines_used` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `lines_used` int(3) NOT NULL,
+  `uploaded_time` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `submissions`
+--
+
+INSERT INTO `submissions` (`sid`, `uid`, `qid`, `attempts`, `errors`, `lines_used`, `uploaded_time`) VALUES
+(8, 1, 2, 1, 5, 9, NULL),
+(9, 1, 2, 2, 10, 9, NULL),
+(10, 1, 2, 3, 20, 11, NULL);
 
 -- --------------------------------------------------------
 
@@ -61,16 +70,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(100) NOT NULL,
   `regno` varchar(12) NOT NULL,
   `phno` bigint(15) NOT NULL,
-  `passwd` varchar(50) NOT NULL
+  `passwd` varchar(50) NOT NULL,
+  `questions_alloted` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `name`, `regno`, `phno`, `passwd`) VALUES
-(1, 'Aditya', '12bce1061', 9940558769, '94ad191eba4ace5d6c49eeab579ad2afeddc22c8'),
-(2, 'Pratik', '12bce1049', 8682598535, 'e85f94d9146974ff5cfdba85d788d02c007706b7');
+INSERT INTO `users` (`uid`, `name`, `regno`, `phno`, `passwd`, `questions_alloted`) VALUES
+(1, 'Aditya', '12bce1061', 9940558769, '94ad191eba4ace5d6c49eeab579ad2afeddc22c8', NULL),
+(2, 'Pratik', '12bce1049', 8682598535, 'e85f94d9146974ff5cfdba85d788d02c007706b7', NULL);
 
 --
 -- Indexes for dumped tables
@@ -107,7 +117,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `submissions`
 --
 ALTER TABLE `submissions`
-  MODIFY `sid` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `sid` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `users`
 --
