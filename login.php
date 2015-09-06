@@ -34,7 +34,7 @@ session_start();
 					<h3 class="text-primary" style="margin-top: 0px; margin-bottom: 20px;">Login</h3>
 					<form role="form" class="form-horizontal" method="post" action="">
 						<div class="form-group form-group-sm">
-							<label class="col-sm-4" for="uname">Username:</label>
+							<label class="col-sm-4" for="uname">Registration No:</label>
 							<div class="col-sm-8"><input type="text" style="text-transform:uppercase;" autofocus class="form-control" name="uname" required id="uname"></div>
 						</div>
 						<div class="form-group form-group-sm">
