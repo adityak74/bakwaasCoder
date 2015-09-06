@@ -22,5 +22,12 @@ unset($userQuestionArray[0]);
 foreach ($userQuestionArray as $value) {
 	$result.="_".$value;
 }
-echo $result;
+//echo $result;
+include('db.php');
+$temp = $_SESSION['uid'];
+$query = mysqli_query($conn,"INSERT INTO users(questions_allotted) VALUES('$result') WHERE uid = $temp");
+if($query)
+{
+	echo "done";
+}
 ?>
