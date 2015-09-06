@@ -21,7 +21,6 @@ if(isset($_POST["submitBt"])) {
     $uploadOk = 0;
 	}
 	if($imageFileType != "cpp") {
-		
 	    echo "Sorry, only Cpp/C++ files are allowed.";
 	    $uploadOk = 0;
 	}

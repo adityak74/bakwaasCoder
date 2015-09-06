@@ -1,16 +1,19 @@
 <?php 
 session_start();
-if(!(isset($_SESSION['logggedin']) && ($_SESSION['logggedin']==1)))
+
+$errorsBasePath = "Errors/";
+
+if(!(isset($_SESSION['loggedin']) && ($_SESSION['loggedin']==1)))
 {
 	die("you are not logged in");
 }
 $uid = $_SESSION['uid'];
-$sid = $_SESSION['sid'];
 $qid = $_SESSION['qid'];
 //$uploadedFile = fopen("$_SESSION['programFilePath']","r+");//$_SESSION[''];
-$orgFile = fopen("$_SESSION['programFilePath']","a+");
+$orgFile = $_SESSION['programFilePath'];
 system("g++ ".$orgFile." 2>out.txt");
-$errorFile = "o_".$uid."_".$qid."_".$_SESSION['attempts']."txt";
+$origFile = fopen("$orgFile","r+");
+$errorFile = $errorsBasePath . "o_".$uid."_".$qid."_".$_SESSION['attempts'].".txt";
 $logFile = fopen("$errorFile","w+");
 $outFile = fopen("out.txt","r+");
 $eCount=0;
@@ -19,21 +22,23 @@ while(!feof($outFile))
 {
 	$line = fgets($outFile);
 	if((strpos($line,'error')!=false))
-	$eCount++;	
+		$eCount++;	
 }
 fclose($outFile);
-while(!feof($orgFile))
+while(!feof($origFile))
 {
-	$line = fgets($orgFile);
+	$line = fgets($origFile);
 	if(strlen($line)>0)
 		$lCount++;
 }
-fclose($orgFile);
-$result = $lCount."<br>".$eCount;
+fclose($origFile);
+$result = $lCount.",".$eCount;
 fwrite($logFile,$result);
 fclose($logFile);
-$_SESSION['attempts'] = $_SESSION['attempts']+1;
 include('db.php');
-$result = mysqli_query($conn,"INSERT INTO submissions(uid,qid,attempts,errors,lines_used) VALUES($uid,$qid,1,$eCount,$lCount)");
-echo $result;
+$result = mysqli_query($conn,"INSERT INTO submissions(uid,qid,attempts,errors,lines_used) VALUES($uid,$qid,".$_SESSION['attempts'].",$eCount,$lCount)");
+if($result){
+	echo "Done.";
+	//$_SESSION['attempts'] = $_SESSION['attempts']+1;
+}
 ?>
