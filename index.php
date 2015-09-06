@@ -109,6 +109,10 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 							</center>
 							<?php
 							}
+							else
+							{
+								echo '<center><br/><h1> Cannot add anymore submissions</h1></center>';
+							}
 							?>
 						</div>
 					</div>
@@ -121,6 +125,7 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 			echo '<h1>Welcome to BakwaasCode!!!</h1>';
 			echo '<br><a class="btn btn-primary btn-lg" role="button" href="register.php">Register</a> | <a class="btn btn-success btn-lg" role="button" href="login.php">Login</a>';
 			echo '</center>';
+			//echo 'Cannot add any more submissions';
 			}
 			?>
 		</div>

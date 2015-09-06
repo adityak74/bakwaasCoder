@@ -8,30 +8,3 @@ Programs/p_1_2_3.cpp:5:21: error: expected ‘:’ before ‘;’ token
 Programs/p_1_2_3.cpp:5:21: error: expected primary-expression before ‘;’ token
 Programs/p_1_2_3.cpp:5:21: error: expected ‘:’ before ‘;’ token
 Programs/p_1_2_3.cpp:5:21: error: expected primary-expression before ‘;’ token
-Programs/p_1_2_3.cpp:6:6: error: expected primary-expression before ‘?’ token
-  cin??"hello world";
-      ^
-Programs/p_1_2_3.cpp:6:20: error: expected ‘:’ before ‘;’ token
-  cin??"hello world";
-                    ^
-Programs/p_1_2_3.cpp:6:20: error: expected primary-expression before ‘;’ token
-Programs/p_1_2_3.cpp:6:20: error: expected ‘:’ before ‘;’ token
-Programs/p_1_2_3.cpp:6:20: error: expected primary-expression before ‘;’ token
-Programs/p_1_2_3.cpp:7:6: error: expected primary-expression before ‘?’ token
-  cin??"hello world";
-      ^
-Programs/p_1_2_3.cpp:7:20: error: expected ‘:’ before ‘;’ token
-  cin??"hello world";
-                    ^
-Programs/p_1_2_3.cpp:7:20: error: expected primary-expression before ‘;’ token
-Programs/p_1_2_3.cpp:7:20: error: expected ‘:’ before ‘;’ token
-Programs/p_1_2_3.cpp:7:20: error: expected primary-expression before ‘;’ token
-Programs/p_1_2_3.cpp:8:6: error: expected primary-expression before ‘?’ token
-  cin??"hello world";
-      ^
-Programs/p_1_2_3.cpp:8:20: error: expected ‘:’ before ‘;’ token
-  cin??"hello world";
-                    ^
-Programs/p_1_2_3.cpp:8:20: error: expected primary-expression before ‘;’ token
-Programs/p_1_2_3.cpp:8:20: error: expected ‘:’ before ‘;’ token
-Programs/p_1_2_3.cpp:8:20: error: expected primary-expression before ‘;’ token
