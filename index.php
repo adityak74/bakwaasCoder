@@ -85,20 +85,64 @@ Verify that the order delivery acknowledgement mail has been recieved once you c
 						<div class="row" >
 							<!-- Problem will load here by random from the database -->
 							<?php 
+							include 'db.php';
 
-							//echo rand(1,10);
+							$query = "SELECT * from users WHERE uid=".$_SESSION['uid'];
+							$result = mysqli_query($conn,$query) or die("query failed".mysqli_error($conn));
+							$row = mysqli_fetch_assoc($result);
 
-							echo "";
+							if($row['questions_alloted']==NULL){
 
-							//putting random qid for testing
-							$_SESSION['qid']=2;
+							
 
+							
+							//questionGeneration here
+							$userQuestionArray = [];
+							$num = rand(1,10);
+							$userQuestionArray[] = $num;
+							while(count($userQuestionArray)<3)
+							{
+								$num = rand(1,10);
+								$flag = 0;
+								foreach ($userQuestionArray as $value) {
+									if($value==$num)
+									{
+										$flag = 1;
+										break;
+									}
+								}
+								if($flag==0)
+									$userQuestionArray[]=$num;
+							}
+							$result =$userQuestionArray[0];
+							unset($userQuestionArray[0]);
+							foreach ($userQuestionArray as $value) {
+								$result.="_".$value;
+							}
+							
+							
+							$temp = $_SESSION['uid'];
+							//echo $temp;
+							$query = mysqli_query($conn,"UPDATE users SET questions_alloted = '$result' WHERE uid = $temp") or die("query failed".mysqli_error($conn));
+							//questions genrated and stored
+							}
+							//display the question to user
+							$uid = $_SESSION['uid'];
+							$result = mysqli_query($conn,"SELECT questions_alloted FROM users where uid = $uid") or die("query failed ".mysqli_error($conn));
+							$row = mysqli_fetch_assoc($result);
+							$question = $row['questions_alloted'];
+							$temp = explode("_",$question);
+							$queDisp = $temp[$_SESSION['attempts']-1];
+							$disQuery = mysqli_query($conn,"SELECT qdesc FROM questions WHERE qid = $queDisp") or die("query failed".mysqli_error($conn));
+							$qrow = mysqli_fetch_assoc($disQuery);
+							
 							if($_SESSION['attempts']<4)
 							{
 							?>
 							<center>
 								<h3 class="text-center">Your Question</h3>
-								<h3>Question goes here</h3>
+								<br>
+								<h4 style="background-color: rgb(255, 255, 255); padding: 20px; border-radius: 10px;margin:10px;"><?php echo $qrow['qdesc']; ?></h4>
 								<form role="form" action="upload.php" method="post" enctype="multipart/form-data">
 									<label for="file">
 										<br>
