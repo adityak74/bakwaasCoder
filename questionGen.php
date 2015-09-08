@@ -25,9 +25,12 @@ foreach ($userQuestionArray as $value) {
 //echo $result;
 include('db.php');
 $temp = $_SESSION['uid'];
-$query = mysqli_query($conn,"INSERT INTO users(questions_allotted) VALUES('$result') WHERE uid = $temp");
+//echo $temp;
+$query = mysqli_query($conn,"UPDATE users SET questions_alloted = '$result' WHERE uid = $temp") or die("query failed".mysqli_error($conn));
 if($query)
 {
 	echo "done";
 }
+else
+echo "Not Done";
 ?>
