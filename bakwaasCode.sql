@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 06, 2015 at 08:10 AM
+-- Generation Time: Sep 08, 2015 at 11:55 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.24
 
@@ -32,7 +32,16 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `difficulty` int(1) NOT NULL,
   `max_err` int(3) NOT NULL,
   `max_lines` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`qid`, `qdesc`, `difficulty`, `max_err`, `max_lines`) VALUES
+(1, 'Generate Fibonacci sequence upto 25 numbers.', 1, 150, 30),
+(2, 'Print Hello world program.', 2, 50, 10),
+(3, 'Sort n numbers using Bubble Sort', 3, 400, 100);
 
 -- --------------------------------------------------------
 
@@ -48,16 +57,16 @@ CREATE TABLE IF NOT EXISTS `submissions` (
   `errors` int(2) NOT NULL,
   `lines_used` int(3) NOT NULL,
   `uploaded_time` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `submissions`
 --
 
 INSERT INTO `submissions` (`sid`, `uid`, `qid`, `attempts`, `errors`, `lines_used`, `uploaded_time`) VALUES
-(8, 1, 2, 1, 5, 9, NULL),
-(9, 1, 2, 2, 10, 9, NULL),
-(10, 1, 2, 3, 20, 11, NULL);
+(11, 1, 2, 1, 5, 9, '2015-09-06 11:53:39'),
+(12, 1, 1, 2, 10, 9, '2015-09-06 11:53:59'),
+(13, 1, 3, 3, 20, 11, '2015-09-06 11:54:15');
 
 -- --------------------------------------------------------
 
@@ -112,12 +121,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `qid` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `qid` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `submissions`
 --
 ALTER TABLE `submissions`
-  MODIFY `sid` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `sid` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `users`
 --
